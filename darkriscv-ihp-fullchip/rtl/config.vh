@@ -1,0 +1,5 @@
+`ifndef DARKRISCV_ASIC_CONFIG_VH
+`define DARKRISCV_ASIC_CONFIG_VH
+`define __3STAGE__
+`define __RESETPC__ 32'h0000_0000
+`endif

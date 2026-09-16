@@ -1,0 +1,87 @@
+meta:
+  version: 3
+  flow: Chip
+  substituting_steps:
+    Checker.IllegalOverlap: null
+
+DESIGN_NAME: chip_top
+VERILOG_FILES:
+  - dir::../rtl/chip_top.sv
+  - dir::../rtl/darkriscv_soc.sv
+  - dir::../rtl/darkriscv.v
+VERILOG_INCLUDE_DIRS:
+  - dir::../rtl
+VERILOG_DEFINES: [USE_POWER_PINS, FUNCTIONAL]
+PRIMARY_GDSII_STREAMOUT_TOOL: klayout
+
+CLOCK_PORT: clk_PAD
+CLOCK_NET: clk_pad/p2c
+CLOCK_PERIOD: 20.0
+PNR_SDC_FILE: dir::chip_top.sdc
+SIGNOFF_SDC_FILE: dir::chip_top.sdc
+FALLBACK_SDC: dir::chip_top.sdc
+
+VDD_NETS: [VDD]
+GND_NETS: [VSS]
+
+FP_SIZING: absolute
+DIE_AREA: [0, 0, 1600, 1600]
+CORE_AREA: [365, 365, 1235, 1235]
+PL_TARGET_DENSITY_PCT: 35
+GRT_ALLOW_CONGESTION: true
+
+PAD_SOUTH:
+  - clk_pad
+  - rst_n_pad
+  - uart_rx_pad
+  - uart_tx_pad
+  - "gpio_inputs\\[0\\].pad"
+  - "gpio_inputs\\[1\\].pad"
+  - "vdd_pads\\[0\\].pad"
+  - "vss_pads\\[0\\].pad"
+PAD_EAST:
+  - "gpio_inputs\\[2\\].pad"
+  - "gpio_inputs\\[3\\].pad"
+  - "gpio_outputs\\[0\\].pad"
+  - "gpio_outputs\\[1\\].pad"
+  - "gpio_outputs\\[2\\].pad"
+  - "iovdd_pads\\[0\\].pad"
+  - "iovss_pads\\[0\\].pad"
+PAD_NORTH:
+  - "gpio_outputs\\[7\\].pad"
+  - "gpio_outputs\\[6\\].pad"
+  - "gpio_outputs\\[5\\].pad"
+  - "gpio_outputs\\[4\\].pad"
+  - "gpio_outputs\\[3\\].pad"
+  - "vdd_pads\\[1\\].pad"
+  - "vss_pads\\[1\\].pad"
+PAD_WEST:
+  - "debug_outputs\\[3\\].pad"
+  - "debug_outputs\\[2\\].pad"
+  - "debug_outputs\\[1\\].pad"
+  - "debug_outputs\\[0\\].pad"
+
+PDN_CORE_RING: true
+PDN_CORE_RING_VWIDTH: 15
+PDN_CORE_RING_HWIDTH: 15
+PDN_CORE_RING_VSPACING: 5
+PDN_CORE_RING_HSPACING: 5
+PDN_CORE_RING_CONNECT_TO_PADS: true
+PDN_ENABLE_PINS: false
+PDN_CFG: dir::pdn_cfg.tcl
+
+PAD_BONDPAD_NAME: bondpad_70x70_novias
+EXTRA_GDS:
+  - dir::../ip/bondpad_70x70_novias/gds/bondpad_70x70_novias.gds
+EXTRA_LEFS:
+  - dir::../ip/bondpad_70x70_novias/lef/bondpad_70x70_novias.lef
+IGNORE_DISCONNECTED_MODULES: [bondpad_70x70_novias]
+MAGIC_EXT_UNIQUE: notopports
+
+MAGIC_GDS_FLATGLOB:
+  - "lvsres_*"
+  - "VIA_M1_*"
+  - "VIA_M2_*"
+  - "*_CELL_CORNER"
+  - "RSC_*"
+  - "*_CELL_SUB"
