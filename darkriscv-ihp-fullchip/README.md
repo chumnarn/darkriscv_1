@@ -105,6 +105,13 @@ make openroad PDK_ROOT="$HOME/.ciel"
 make klayout  PDK_ROOT="$HOME/.ciel"
 ```
 
+
+
+![openroad](https://github.com/chumnarn/darkriscv_1/blob/master/darkriscv-ihp-fullchip/darkriscv/2026-09-23_15-21-45.png)
+
+![klayout](https://github.com/chumnarn/darkriscv_1/blob/master/darkriscv-ihp-fullchip/darkriscv/2026-09-23_15-34-07.png)
+
+
 Final views are copied to `final/`; step logs and intermediate states remain in
 `librelane/runs/<tag>/`.
 
