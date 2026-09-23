@@ -59,6 +59,7 @@ module chip_top (
                 .c2p(debug[i]), .pad(debug_PAD[i]));
         end
         for (genvar i=0; i<2; i++) begin : vdd_pads
+                (* keep *)
             sg13g2_IOPadVdd pad (
 `ifdef USE_POWER_PINS
                 .iovdd(IOVDD), .iovss(IOVSS), .vdd(VDD), .vss(VSS)
@@ -66,6 +67,7 @@ module chip_top (
             );
         end
         for (genvar i=0; i<2; i++) begin : vss_pads
+            (* keep *)
             sg13g2_IOPadVss pad (
 `ifdef USE_POWER_PINS
                 .iovdd(IOVDD), .iovss(IOVSS), .vdd(VDD), .vss(VSS)
@@ -73,6 +75,7 @@ module chip_top (
             );
         end
         for (genvar i=0; i<1; i++) begin : iovdd_pads
+                (* keep *)
             sg13g2_IOPadIOVdd pad (
 `ifdef USE_POWER_PINS
                 .iovdd(IOVDD), .iovss(IOVSS), .vdd(VDD), .vss(VSS)
@@ -80,6 +83,7 @@ module chip_top (
             );
         end
         for (genvar i=0; i<1; i++) begin : iovss_pads
+                (* keep *)
             sg13g2_IOPadIOVss pad (
 `ifdef USE_POWER_PINS
                 .iovdd(IOVDD), .iovss(IOVSS), .vdd(VDD), .vss(VSS)
